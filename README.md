@@ -1,5 +1,4 @@
 # pymidifile
-Functions and utils to convert, transform and describe midi files.
 
 This repository combines various available and stable resources to provide a pythonic framework for music analysis and manipulation of midi files. It is conceptually inspired in the MATLAB *miditoolbox* by Tuomas Eerola and Petri Toiviainen (https://github.com/miditoolbox), although the various conversions, filters and descriptors implemented are guided by my own research on tonality in Electronic Dance Music.
 
@@ -20,4 +19,6 @@ Additionally, I provide a number of command-line scripts that perform useful ope
 - **mido** for midi file management (https://github.com/olemb/mido).
 - **Pandas** for data analysis (http://pandas.pydata.org/).
 - **music21** for symbolic music manipulations (http://web.mit.edu/music21/). 
-- **seaborn** for plotting graphs and distributions (seaborn.pydata.org).
+- **seaborn** for plotting graphs and distributions (http://seaborn.pydata.org).
+
+Other dependencies include common python scientific toolkits such as *Numpy*, *scipy-stats* and *json*.
