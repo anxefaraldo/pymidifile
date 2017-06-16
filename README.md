@@ -7,8 +7,8 @@ This repository combines various available and stable resources to provide a pyt
 The *Pymidifile* functions can be grouped into three categories: 
 
 1) **Conversion**: midi files to and from python lists, pandas Dataframes and/or music21 scores, in all combinations.
-2) **Tranform**: process some parameters of any of the previous types, filtering or transfoming its contents.
-3) **Descriptive**: describe in some way (by means of plots or statistical analysis) analytical results.
+2) **Descriptive**: extract, combine and visualize musical descriptors from any of the converted types (python lists, DataFrames or Scores).
+3) **Tranform**: process parameters in any converted type, transfoming some or all of its data.
 
 Additionally, I provide a number of **command-line scripts** that perform useful operations on batches of files (quantization, reformatting, feature extraction).
 
