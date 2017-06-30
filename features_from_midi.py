@@ -8,7 +8,7 @@ a JSON file with the results of the analysis.
 
 """
 
-from midistats import *
+from pymidifile import *
 from pandas import Series as s, DataFrame as df
 
 

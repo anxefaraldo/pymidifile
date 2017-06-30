@@ -486,6 +486,22 @@ def find_identical_rows(df, row_index):
             print(row[0])
 
 
+def copy_files_in_df(df, destination):
+    """
+    Move a row from a Pandas dataframe to a different location in the hard drive.
+    This function assumes that each row represents a file in the filesystem and that
+    its filepath is the index of the row.
+
+    """
+    from shutil import copyfile
+    if not os.path.isdir(destination):
+        raise IOError
+    rows = df.index
+    for i in range(len(rows)):
+        # os.rename(rows[i], os.path.join(destination, os.path.split(rows[i])[1]))
+        copyfile(rows[i], os.path.join(destination, os.path.split(rows[i])[1]))
+
+
 def move_rows(df, destination):
     """
     Move a row from a Pandas dataframe to a different location in the hard drive.
@@ -493,7 +509,7 @@ def move_rows(df, destination):
     its filepath is the index of the row.
 
     """
-    if not os.path.isdir:
+    if not os.path.isdir(destination):
         raise IOError
     rows = df.index
     with open(os.path.join(destination, 'original_files.txt'), 'w') as f:
@@ -627,7 +643,6 @@ def values_greater_than(my_dataframe, my_col, threshold=0):
     for item in fields_kept:
         temp = temp.append(my_dataframe[my_dataframe[my_col] == item])
     return temp
-
 
 
 def n_most_frequent_values(my_dataframe, my_col, n_most_freq=6):

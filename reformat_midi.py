@@ -6,7 +6,7 @@ Angel Faraldo, April 2017.
 """
 
 import os.path
-from midistats import *
+from pymidifile import *
 
 
 def reformat_midi(mid, name=None, verbose=True, write_to_file=False, override_time_info=True):
