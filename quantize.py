@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 from argparse import ArgumentParser
 from reformat_midi import *
 

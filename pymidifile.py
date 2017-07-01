@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 Useful funtions related to directory and file management, Pandas and music21.
 

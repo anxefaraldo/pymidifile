@@ -1,7 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """
 This script processes midi files to have them in a common and regular format.
 
-Angel Faraldo, April 2017.
+Ángel Faraldo, April 2017.
 
 """
 
@@ -82,13 +85,15 @@ def reformat_midi(mid, name=None, verbose=True, write_to_file=False, override_ti
 
         flat_track = MidiTrack()
         flat_track.append(MetaMessage("track_name", name=os.path.split(name)[1], time=0))
+        print("NAME", os.path.split(name)[1])
+        flat_track.append(MetaMessage("track_name", name="unnamed", time=0))
         flat_track.append(MetaMessage("instrument_name", name="Bass", time=0))
 
         if override_time_info:
             if verbose:
                 print('WARNING: Ignoring Tempo and Time Signature Information.')
             flat_track.append(MetaMessage("set_tempo", tempo=480000, time=0))
-            flat_track.append(MetaMessage("time_signature",numerator=4, denominator=4, time=0))
+            flat_track.append(MetaMessage("time_signature", numerator=4, denominator=4, time=0))
 
         for track in mid.tracks:
             for msg in track:
@@ -184,12 +189,12 @@ if __name__ == "__main__":
     print("Reformatting: {0}".format(args.input))
 
     if os.path.isfile(args.input):
-        results = reformat_midi(args.input, args.verbose, write_to_file=True, override_time_info=args.override)
+        results = reformat_midi(args.input, verbose=args.verbose, write_to_file=True, override_time_info=args.override)
 
     elif os.path.isdir(args.input):
         midi_files = folderfiles(args.input, ext='.mid', recursive=args.recursive)
         for midi_file in midi_files:
-            reformat_midi(midi_file, args.verbose, write_to_file=True, override_time_info=args.override)
+            reformat_midi(midi_file, verbose=args.verbose, write_to_file=True, override_time_info=args.override)
 
     else:
         raise IOError("Make sure your path is a valid file name or directory.")
