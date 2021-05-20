@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 """
-Useful funtions related to directory and file management, Pandas and music21.
+Useful functions related to directory and file management, Pandas and music21.
 
 THINGS TO LOOK AT (some implemented, some not yet):
 
-- Pitch class set (the set of all pitch classes contained in the bassline).
+- Pitch class set (the set of all pitch classes contained in the bass-line).
 - Calculate possible modes for the whole loop, and per bar.
 - First and last notes of the loop.
 - Lowest and highest notes of the loop.
@@ -36,7 +36,7 @@ from mido import MidiFile, MidiTrack, Message, MetaMessage
 def parse_mid(mid):
     """
     This function allows to pass midi files or streams
-    without reduntant reloading files from disk.
+    without redundant reloading files from disk.
 
     """
     if type(mid) is str:

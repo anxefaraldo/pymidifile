@@ -5,10 +5,10 @@
 from argparse import ArgumentParser
 from reformat_midi import *
 
-parser = ArgumentParser(description="Performs quantisation and reformatting of midifiles.")
+parser = ArgumentParser(description="Performs quantisation and reformatting of midi files.")
 parser.add_argument("input", help="Midi file or dir to reformat.")
 parser.add_argument("-v", "--verbose", action="store_true", help="print out messages to the console while formatting.")
-parser.add_argument("-r", "--recursive", action="store_true", help="analyse subfolders recursively")
+parser.add_argument("-r", "--recursive", action="store_true", help="analyse sub-folders recursively")
 parser.add_argument("-o", "--override", action="store_true", help="Override original tempo and time signature.")
 
 args = parser.parse_args()
@@ -18,8 +18,8 @@ print("Reformatting: {0}".format(args.input))
 if os.path.isfile(args.input):
     reformatted = reformat_midi(args.input, verbose=args.verbose, write_to_file=False, override_time_info=args.override)
     matrix = mid_to_matrix(reformatted)
-    quant = quantize_matrix(matrix, stepSize=0.25, quantizeOffsets=True, quantizeDurations=args.override)
-    track = matrix_to_mid(quant)
+    quantizer = quantize_matrix(matrix, stepSize=0.25, quantizeOffsets=True, quantizeDurations=args.override)
+    track = matrix_to_mid(quantizer)
     reformat_midi(track, name=args.input, verbose=args.verbose, write_to_file=True, override_time_info=args.override)
 
 elif os.path.isdir(args.input):
@@ -27,8 +27,8 @@ elif os.path.isdir(args.input):
     for midi_file in midi_files:
         reformat_midi(midi_file, verbose=args.verbose, write_to_file=True, override_time_info=args.override)
         matrix = mid_to_matrix(midi_file)
-        quant = quantize_matrix(matrix, stepSize=0.25, quantizeOffsets=True, quantizeDurations=args.override)
-        track = matrix_to_mid(quant)
+        quantizer = quantize_matrix(matrix, stepSize=0.25, quantizeOffsets=True, quantizeDurations=args.override)
+        track = matrix_to_mid(quantizer)
         reformat_midi(track, name=midi_file, verbose=args.verbose, write_to_file=True, override_time_info=args.override)
         print('\n')
 
